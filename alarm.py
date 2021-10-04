@@ -2,11 +2,7 @@
 """ Alarm Clock
 ----------------------------------------
 """
-import datetime
-import os
-import time
-import random
-import webbrowser
+import datetime,os,time,random,webbrowser
 // If video URL file does not exist, create one
 if not os.path.isfile("youtube_alarm_videos.txt"):
     print('Creating "youtube_alarm_videos.txt"...')
