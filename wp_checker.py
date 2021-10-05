@@ -33,7 +33,6 @@ def scanner(webnya):
             print("{} -> Unknown CMS" .format(target))
     except Exception as e:
         print("{} -> Unknown Error : {}" .format(target,e))
-
 if __name__ == '__main__':
     os.system('cls' if os.name == 'nt' else 'clear')
     banner()
@@ -44,6 +43,4 @@ if __name__ == '__main__':
     ThreadPool = Pool(int(threadny))
     Threads = ThreadPool.map(scanner, a)
 
-    
-
-    
+    #Hacktoberfest-indonesia-2021
