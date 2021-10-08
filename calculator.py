@@ -14,7 +14,8 @@ def multiply(num1, num2):
   
 # Function to divide two numbers
 def divide(num1, num2):
-    return num1 / num2
+  
+    return num1 / num2 if num2!=0 else "ERROR"
   
 print("Please select operation -\n" \
         "1. Add\n" \
