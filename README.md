@@ -13,6 +13,9 @@ Please make sure to update tests as appropriate.
 
 hacktoberfest 2021
 hacktober.cuy
+hacktober-fest
 Hacktoberfest 21
 hacktober.cuy
 hacktoberkaos
+hacktoberk t-shirt
+Hacktober Indonesia 2021
