@@ -24,4 +24,5 @@ hacktober dong gaskan bang
 bikin hacktober disini aja ya bang biar gaterlalu ngerusuh hehe
 hacktoberdungg
 abay-hacktoberfest
-haxtober2022 
+haxtober2022
+hektoberfes2022
