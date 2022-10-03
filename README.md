@@ -26,3 +26,4 @@ hacktoberdungg
 abay-hacktoberfest
 haxtober2022
 hektoberfes2022
+hektoberpes2022
