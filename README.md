@@ -1,29 +1,10 @@
-# Python Projects 
-
-Python Projects is a Python Projects library made by Open-Source Enthusiast.
-
+# Python-Projects
+Python Projects is a Python Projects library made by Open-Source Enthusiast. Feel free to create new file, don't hesitate to pull your code, the most important thing is that the file name here must match your nickname so that file does not conflict with other people.
 
 ## Contributing
-Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
-
-Please make sure to update tests as appropriate.
+Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
 
 ## License
 [MIT](https://choosealicense.com/licenses/mit/)
 
-hacktoberfest 2021
-hacktober.cuy
-hacktober-fest
-Hacktoberfest 21
-hacktober.cuy
-hacktoberkaos
-hacktoberk t-shirt
-Hacktober Indonesia 2021
-hacktober indonesia bang firman ganteng
-hacktober dong gaskan bang
-bikin hacktober disini aja ya bang biar gaterlalu ngerusuh hehe
-hacktoberdungg
-abay-hacktoberfest
-haxtober2022
-hektoberfes2022
-hektoberpes2022
+#HACKTOBERFEST
