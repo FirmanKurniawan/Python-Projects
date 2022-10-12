@@ -7,7 +7,6 @@ class LL:
     def __init__(self,head=None):
         self.head=head
 
-        
     def insert_node(self,x):
         """
         Code to add node at end
@@ -19,7 +18,6 @@ class LL:
         while h.nxt:
             h=h.nxt
         h.nxt=node(x)
-
         
     def Print(self):
         h=self.head
