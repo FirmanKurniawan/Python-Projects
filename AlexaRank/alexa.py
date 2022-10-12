@@ -6,7 +6,7 @@ requests.packages.urllib3.disable_warnings()
 
 def stats():
 
-	url = input('Input your website -> ')
+	url = input('Input your website-> ')
 	r = requests.get('https://data.alexa.com/data?cli=10&dat=snbamz&url={}'.format(url), verify=False)
 	alexa = re.findall('TEXT="(.*)" SOURCE="panel"', r.text)
 
@@ -24,7 +24,7 @@ def stats():
 
 def mass():
 
-	url = input('Input list of website -> ')
+	url = input('Input list of website-> ')
 	yaa = open(url, 'r').readlines()
 	for i in yaa:
 		boo = i.strip()
