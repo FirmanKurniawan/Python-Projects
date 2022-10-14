@@ -12,17 +12,17 @@ distance = 250
 
 while distance > 0:
     # right
-    pyautogui.dragRel(distance, 0, duration = 0.1)
-    
+    pyautogui.dragRel(distance, 0, duration=0.1)
+
     distance -= 5
 
     # down
-    pyautogui.dragRel(0, distance, duration = 0.1)
+    pyautogui.dragRel(0, distance, duration=0.1)
 
     # left
-    pyautogui.dragRel(-distance, 0, duration = 0.1)
+    pyautogui.dragRel(-distance, 0, duration=0.1)
 
     distance -= 5
 
-    #up
-    pyautogui.dragRel(0, -distance, duration = 0.1)
+    # up
+    pyautogui.dragRel(0, -distance, duration=0.1)

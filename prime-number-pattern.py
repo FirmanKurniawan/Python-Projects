@@ -7,7 +7,7 @@ np.set_printoptions(threshold=1000000)
 def prime_numbers(n):
     global list_of_primes
     list_of_primes = []
-    for num in range(2, n+1):
+    for num in range(2, n + 1):
         if all(num % i != 0 for i in range(2, num)):
             list_of_primes.append(num)
 
@@ -35,6 +35,6 @@ subtract_arrays()
 plt.title("Prime Parallelograms")
 plt.xlabel("f(p(n)")
 plt.ylabel("Prime Numbers")
-plt.gca().spines['top'].set_visible(False)
-plt.gca().spines['right'].set_visible(False)
+plt.gca().spines["top"].set_visible(False)
+plt.gca().spines["right"].set_visible(False)
 plt.show()

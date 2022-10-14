@@ -1,11 +1,12 @@
-import calender 
+import calender
+
 yy = 2021
-dd = 10 
-#ini calendar 
+dd = 10
+# ini calendar
 
-print(calendar.month(yy, mm)) 
-#menampilkan kalender 
+print(calendar.month(yy, mm))
+# menampilkan kalender
 
-yy = int(input("Enter year: "))  
+yy = int(input("Enter year: "))
 
 mm = int(input("Enter month: "))

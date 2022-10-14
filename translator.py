@@ -2,30 +2,32 @@ from googletrans import Translator
 
 translator = Translator()
 
-language = {"bn": "Bangla",
-            "en": "English",
-            "ko": "Koren",
-            "fr": "French",
-            "de": "German",
-            "he": "Hebrew",
-            "hi": "Hindi",
-            "it": "Italian",
-            "ja": "Japanese",
-            'la': "Latin",
-            "ms": "Malay",
-            "ne": "Nepali",
-            "ru": "Russian",
-            "ar": "Arabic",
-            "zh": "Chinese",
-            "es": "Spanish"
-            }
+language = {
+    "bn": "Bangla",
+    "en": "English",
+    "ko": "Koren",
+    "fr": "French",
+    "de": "German",
+    "he": "Hebrew",
+    "hi": "Hindi",
+    "it": "Italian",
+    "ja": "Japanese",
+    "la": "Latin",
+    "ms": "Malay",
+    "ne": "Nepali",
+    "ru": "Russian",
+    "ar": "Arabic",
+    "zh": "Chinese",
+    "es": "Spanish",
+}
 
 allow = True  # variable to control correct language code input
 
 while allow:  # checking if language code is valid
 
     user_code = input(
-        f"Please input desired language code. To see the language code list enter 'options' \n")
+        f"Please input desired language code. To see the language code list enter 'options' \n"
+    )
 
     if user_code == "options":  # showing language options
         print("Code : Language")  # Heading of language option menu
@@ -43,7 +45,8 @@ while allow:  # checking if language code is valid
 
 while True:  # starting translation loop
     string = input(
-        "\nWrite the text you want to translate: \nTo exit the program write 'close'\n")
+        "\nWrite the text you want to translate: \nTo exit the program write 'close'\n"
+    )
 
     if string == "close":  # exit program command
         print(f"\nHave a nice Day!")
@@ -57,6 +60,10 @@ while True:  # starting translation loop
     # printing pronunciation
     print(f"Pronunciation : {translated.pronunciation}")
 
-    for i in language.items():  # checking if the source language is listed on language dict and printing it
+    for (
+        i
+    ) in (
+        language.items()
+    ):  # checking if the source language is listed on language dict and printing it
         if translated.src == i[0]:
             print(f"Translated from : {i[1]}")

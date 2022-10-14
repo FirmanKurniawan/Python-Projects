@@ -71,4 +71,3 @@ while True:
         continue
     else:
         print("Angka yang dimasukkan salah!")
-

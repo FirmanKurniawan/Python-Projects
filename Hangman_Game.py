@@ -1,10 +1,13 @@
 import random
 
+
 def hangman():
-    word = random.choice(["tiger", "superman", "thor", "doraemon", "avenger", "water", "stream"])
-    validletter = 'abcdefghijklmnopqrstuvwxyz'
+    word = random.choice(
+        ["tiger", "superman", "thor", "doraemon", "avenger", "water", "stream"]
+    )
+    validletter = "abcdefghijklmnopqrstuvwxyz"
     turns = 10
-    guessmade = ''
+    guessmade = ""
     while len(word) > 0:
         main = ""
         missed = 0
@@ -75,9 +78,9 @@ def hangman():
             print("  ---------  ")
             print("    \ O_|/   ")
             print("      |      ")
-            print("     / \     ")    
-        
-        if turns == 0:    
+            print("     / \     ")
+
+        if turns == 0:
             print("You lose")
             print("You let a kind man die")
             print("  ---------  ")
@@ -85,6 +88,7 @@ def hangman():
             print("     /|\     ")
             print("     / \     ")
             break
+
 
 name = input("Enter your name: ")
 print(f"Welcome {name}")

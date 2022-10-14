@@ -1,4 +1,6 @@
-print('Insertion Sort')
+print("Insertion Sort")
+
+
 def insertionsort(arr):
     for i in range(1, len(arr)):
         key = arr[i]
@@ -9,6 +11,7 @@ def insertionsort(arr):
         arr[j + 1] = key
     return arr
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     arr = [5, 4, 3, 2, 1, 0, 9, 8, 7, 6]
     print(insertionsort(arr))

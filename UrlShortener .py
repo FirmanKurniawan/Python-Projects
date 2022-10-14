@@ -7,7 +7,8 @@ response_api = requests.get(sample_url).text
 if response_api:
     print(
         "\n=======================\nGenerated: {}\nInput URL: {}".format(
-            response_api,
-            input_str))
+            response_api, input_str
+        )
+    )
 else:
     print("Something is wrong. please try again later.")

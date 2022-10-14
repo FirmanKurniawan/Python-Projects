@@ -1,4 +1,4 @@
-#all_the symbols
+# all_the symbols
 symbols = {
     "a": ".-",
     "b": "-...",
@@ -28,7 +28,7 @@ symbols = {
     "z": "--..",
 }
 
-#the user has to tyoe a word
+# the user has to tyoe a word
 ask = input("type: ")
 
 
@@ -39,4 +39,4 @@ for i in range(length):
     if ask[i] in symbols.keys():
         output = output + " " + symbols.get(ask[i])
 
-print(output)   
+print(output)

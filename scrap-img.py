@@ -39,7 +39,7 @@ def download_img(img_link, index):
         img_data = rq.get(img_link).content
         with open(output + "\\" + str(index + 1) + extension, "wb+") as f:
             f.write(img_data)
-        
+
         f.close()
     except Exception:
         pass

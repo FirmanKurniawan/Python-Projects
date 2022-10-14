@@ -1,5 +1,4 @@
 class Problem:
-
     def __init__(self):
         # it a tree that is represented in the form of nested dictionary
         # where every key represents a node having child and last nodes
@@ -24,7 +23,7 @@ class Problem:
             }
         }"""
         # Second symmetrical tree with each node having 3 children
-        '''self.tree = {
+        """self.tree = {
             'A': {
                 'B': {
                     'E':[3, 8, 4]
@@ -48,7 +47,7 @@ class Problem:
                     'M':[5, 4, 9]
                 }
             }
-        }'''
+        }"""
         # third unsymmetrical tree with different number of children
         # that looks like this
         #         A
@@ -59,23 +58,11 @@ class Problem:
         #   |   /\   |  / \  / | \
         #   5   3 6  9  2 0  9 8 4
         self.tree = {
-            'A': {
-                'B': {
-                    'D': [5]
-                    ,
-                    'E': [3, 6]
-                },
-                'C': {
-                    'F': [9]
-                    ,
-                    'G': [2, 0]
-                    ,
-                    'H': [9, 8, 4]
-
-                }
+            "A": {
+                "B": {"D": [5], "E": [3, 6]},
+                "C": {"F": [9], "G": [2, 0], "H": [9, 8, 4]},
             }
         }
-
 
     def apply_min_max(self, current_subtree=None, min_max_chose=max):
         """
@@ -89,7 +76,7 @@ class Problem:
         """
         if current_subtree is None:
             current_subtree = self.tree
-            print('Min Max Started')
+            print("Min Max Started")
 
         # list that contains integers that are returned from next recursive scope.
         # is a min or max of child nodes.
@@ -109,7 +96,9 @@ class Problem:
             value = self.apply_min_max(current_subtree[key], min_max_chose)
             returned_values.append(value)
 
-        print(f"Values {returned_values} are returned to {'max' if min_max_chose == min else 'min'} scope")
+        print(
+            f"Values {returned_values} are returned to {'max' if min_max_chose == min else 'min'} scope"
+        )
         # return min or max depending on which scope it is.
         return min_max_chose(returned_values)
 
@@ -119,5 +108,5 @@ def main():
     print(p.apply_min_max())
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main()

@@ -7,7 +7,7 @@ import sys
 plain_text = sys.argv[1]
 
 # The key length must be 16 (AES-128), 24 (AES-192), or 32 (AES-256) Bytes.
-key = b'this is a 16 key'
+key = b"this is a 16 key"
 
 # Generate a non-repeatable key vector with a length
 # equal to the size of the AES block

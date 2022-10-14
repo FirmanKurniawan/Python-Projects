@@ -45,7 +45,7 @@ class ZipBruter:
             try:
                 with ZipFile(self.file) as zipfile:
                     zipfile.extractall(pwd=passwd.encode())
-                print('Found passwd: %s' % passwd)
+                print("Found passwd: %s" % passwd)
             except (RuntimeError, BadZipfile):
                 pass
 
@@ -68,16 +68,16 @@ class ZipBruter:
 
     def read_wordlist(self) -> str:
         """Read given wordlist file and yield target passwds"""
-        with open(self.word_list, 'r') as file:
+        with open(self.word_list, "r") as file:
             for line in file.readlines():
                 yield line.strip()
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     parser = ArgumentParser()
-    parser.add_argument('-f', '--file', type=str, help='Target encrypted zip file.')
-    parser.add_argument('-w', '--word-list', type=str, help='Wordlist to be used.')
-    parser.add_argument('-t', '--threads', type=int, default=4, help='Thread count.')
+    parser.add_argument("-f", "--file", type=str, help="Target encrypted zip file.")
+    parser.add_argument("-w", "--word-list", type=str, help="Wordlist to be used.")
+    parser.add_argument("-t", "--threads", type=int, default=4, help="Thread count.")
     args = parser.parse_args()
 
     if not args.file or not args.word_list:

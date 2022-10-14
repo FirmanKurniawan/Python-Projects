@@ -1,16 +1,19 @@
-#pip install -U scikit-learn
-#Make sure all the .txt files that need to be checked are in the same directory as the script
+# pip install -U scikit-learn
+# Make sure all the .txt files that need to be checked are in the same directory as the script
 import os
 from sklearn.feature_extraction.text import TfidfVectorizer
 from sklearn.metrics.pairwise import cosine_similarity
 
-user_files = [doc for doc in os.listdir() if doc.endswith('.txt')]
-user_notes = [open(_file, encoding='utf-8').read()
-                 for _file in user_files]
+user_files = [doc for doc in os.listdir() if doc.endswith(".txt")]
+user_notes = [open(_file, encoding="utf-8").read() for _file in user_files]
 
 
-def vectorize(Text): return TfidfVectorizer().fit_transform(Text).toarray()
-def similarity(doc1, doc2): return cosine_similarity([doc1, doc2])
+def vectorize(Text):
+    return TfidfVectorizer().fit_transform(Text).toarray()
+
+
+def similarity(doc1, doc2):
+    return cosine_similarity([doc1, doc2])
 
 
 vectors = vectorize(user_notes)

@@ -5,7 +5,8 @@ from json import *
 from time import sleep
 from tqdm import tqdm
 
-banner = lambda : f'''
+banner = (
+    lambda: f"""
   _____        _                         _     _
  |  __ \      | |                       (_)   | |
  | |  | | __ _| |_ __ _    ___ _____   ___  __| |
@@ -15,9 +16,11 @@ banner = lambda : f'''
                     CLI version
         my profile: https://github.com/gitcomeon8
 
-'''
-class main:
+"""
+)
 
+
+class main:
     def __init__(self):
         self.url = "https://api.kawalcorona.com/indonesia"
         self.get = get(self.url).text
@@ -29,11 +32,11 @@ class main:
             self.js = loads(self.get)
             for x in self.js:
                 for c in x:
-                    print (f'[*] {c}: {x[c]}')
+                    print(f"[*] {c}: {x[c]}")
         except Exception as er:
-            print (f'[!] {er}')
+            print(f"[!] {er}")
 
 
-if __name__=='__main__':
-    print (banner())
+if __name__ == "__main__":
+    print(banner())
     main().parse()

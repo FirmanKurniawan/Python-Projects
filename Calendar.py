@@ -15,17 +15,16 @@ def showCal():
     # start the GUI
     new_gui.mainloop()
 
+
 if __name__ == "__main__":
     gui = Tk()
     gui.config(background="black")
     gui.title("CALENDER")
     gui.geometry("250x140")
-    cal = Label(gui, text="  CALENDAR   ", bg="Red",
-                font=("times", 28, 'bold'))
+    cal = Label(gui, text="  CALENDAR   ", bg="Red", font=("times", 28, "bold"))
     year = Label(gui, text="Enter Year", bg="Red")
     year_field = Entry(gui)
-    Show = Button(gui, text="Show Calendar", fg="Black",
-                  bg="Red", command=showCal)
+    Show = Button(gui, text="Show Calendar", fg="Black", bg="Red", command=showCal)
     Exit = Button(gui, text="Exit", fg="Black", bg="Red", command=exit)
     cal.grid(row=1, column=1)
     year.grid(row=2, column=1)

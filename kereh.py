@@ -1,18 +1,12 @@
 # username : kereh
 # github : https://github.com/kereh
-#hacktoberfest2022
+# hacktoberfest2022
 
-GRAPH = {
-    'A': ['B','C'],
-    'B': ['D','E'],
-    'C': ['F'],
-    'D': [],
-    'E': [],
-    'F': []
-}
+GRAPH = {"A": ["B", "C"], "B": ["D", "E"], "C": ["F"], "D": [], "E": [], "F": []}
+
 
 def bfs_algorithm(nodes, start):
-    
+
     queue = [start]
     visited = []
 
@@ -33,4 +27,5 @@ def bfs_algorithm(nodes, start):
 
     return visited
 
-print(bfs_algorithm(GRAPH, 'A'))
+
+print(bfs_algorithm(GRAPH, "A"))

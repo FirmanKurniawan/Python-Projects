@@ -1,10 +1,10 @@
 class AtmCard:
-    def _init_ (self, defaultPin, defaultBalance) :
+    def _init_(self, defaultPin, defaultBalance):
         self.defaultPin = defaultPin
-        self.defaultBalance = defaultBalance 
+        self.defaultBalance = defaultBalance
 
-    def cekPinAwal(self) :
+    def cekPinAwal(self):
         return self.defaultPin
-    def ceksaldoAwal(self) :
-        return self.defaultBalance    
 
+    def ceksaldoAwal(self):
+        return self.defaultBalance

@@ -62,9 +62,7 @@ if __name__ == "__main__":
 
         print(pformat(files), file=sys.stderr)
 
-        skip_prefix_list = [
-            "doc/", "examples/", "dev/", "kubernetes/", "site/"
-        ]
+        skip_prefix_list = ["doc/", "examples/", "dev/", "kubernetes/", "site/"]
 
         for changed_file in files:
             if changed_file.startswith("python/ray/tune"):
@@ -111,12 +109,9 @@ if __name__ == "__main__":
             elif changed_file.startswith("docker/"):
                 RAY_CI_DOCKER_AFFECTED = 1
                 RAY_CI_LINUX_WHEELS_AFFECTED = 1
-            elif changed_file.startswith("doc/") and changed_file.endswith(
-                    ".py"):
+            elif changed_file.startswith("doc/") and changed_file.endswith(".py"):
                 RAY_CI_DOC_AFFECTED = 1
-            elif any(
-                    changed_file.startswith(prefix)
-                    for prefix in skip_prefix_list):
+            elif any(changed_file.startswith(prefix) for prefix in skip_prefix_list):
                 # nothing is run but linting in these cases
                 pass
             elif changed_file.startswith("src/"):
@@ -169,35 +164,47 @@ if __name__ == "__main__":
         RAY_CI_STREAMING_PYTHON_AFFECTED = 1
         RAY_CI_STREAMING_JAVA_AFFECTED = 1
 
-    if not RAY_CI_TUNE_AFFECTED and not RAY_CI_SERVE_AFFECTED and \
-            not RAY_CI_JAVA_AFFECTED and not RAY_CI_PYTHON_AFFECTED and not \
-            RAY_CI_STREAMING_CPP_AFFECTED and \
-            not RAY_CI_STREAMING_PYTHON_AFFECTED and \
-            not RAY_CI_STREAMING_JAVA_AFFECTED and \
-            not RAY_CI_SGD_AFFECTED:
+    if (
+        not RAY_CI_TUNE_AFFECTED
+        and not RAY_CI_SERVE_AFFECTED
+        and not RAY_CI_JAVA_AFFECTED
+        and not RAY_CI_PYTHON_AFFECTED
+        and not RAY_CI_STREAMING_CPP_AFFECTED
+        and not RAY_CI_STREAMING_PYTHON_AFFECTED
+        and not RAY_CI_STREAMING_JAVA_AFFECTED
+        and not RAY_CI_SGD_AFFECTED
+    ):
         RAY_CI_ONLY_RLLIB_AFFECTED = 1
 
     # Log the modified environment variables visible in console.
-    print(" ".join([
-        "RAY_CI_TUNE_AFFECTED={}".format(RAY_CI_TUNE_AFFECTED),
-        "RAY_CI_SGD_AFFECTED={}".format(RAY_CI_SGD_AFFECTED),
-        "RAY_CI_ONLY_RLLIB_AFFECTED={}".format(RAY_CI_ONLY_RLLIB_AFFECTED),
-        "RAY_CI_RLLIB_AFFECTED={}".format(RAY_CI_RLLIB_AFFECTED),
-        "RAY_CI_RLLIB_FULL_AFFECTED={}".format(RAY_CI_RLLIB_FULL_AFFECTED),
-        "RAY_CI_SERVE_AFFECTED={}".format(RAY_CI_SERVE_AFFECTED),
-        "RAY_CI_DASHBOARD_AFFECTED={}".format(RAY_CI_DASHBOARD_AFFECTED),
-        "RAY_CI_DOC_AFFECTED={}".format(RAY_CI_DOC_AFFECTED),
-        "RAY_CI_JAVA_AFFECTED={}".format(RAY_CI_JAVA_AFFECTED),
-        "RAY_CI_PYTHON_AFFECTED={}".format(RAY_CI_PYTHON_AFFECTED),
-        "RAY_CI_LINUX_WHEELS_AFFECTED={}".format(RAY_CI_LINUX_WHEELS_AFFECTED),
-        "RAY_CI_MACOS_WHEELS_AFFECTED={}".format(RAY_CI_MACOS_WHEELS_AFFECTED),
-        "RAY_CI_STREAMING_CPP_AFFECTED={}".format(
-            RAY_CI_STREAMING_CPP_AFFECTED),
-        "RAY_CI_STREAMING_PYTHON_AFFECTED={}".format(
-            RAY_CI_STREAMING_PYTHON_AFFECTED),
-        "RAY_CI_STREAMING_JAVA_AFFECTED={}".format(
-            RAY_CI_STREAMING_JAVA_AFFECTED),
-        "RAY_CI_DOCKER_AFFECTED={}".format(RAY_CI_DOCKER_AFFECTED),
-        "RAY_CI_PYTHON_DEPENDENCIES_AFFECTED={}".format(
-            RAY_CI_PYTHON_DEPENDENCIES_AFFECTED),
-    ]))
+    print(
+        " ".join(
+            [
+                "RAY_CI_TUNE_AFFECTED={}".format(RAY_CI_TUNE_AFFECTED),
+                "RAY_CI_SGD_AFFECTED={}".format(RAY_CI_SGD_AFFECTED),
+                "RAY_CI_ONLY_RLLIB_AFFECTED={}".format(RAY_CI_ONLY_RLLIB_AFFECTED),
+                "RAY_CI_RLLIB_AFFECTED={}".format(RAY_CI_RLLIB_AFFECTED),
+                "RAY_CI_RLLIB_FULL_AFFECTED={}".format(RAY_CI_RLLIB_FULL_AFFECTED),
+                "RAY_CI_SERVE_AFFECTED={}".format(RAY_CI_SERVE_AFFECTED),
+                "RAY_CI_DASHBOARD_AFFECTED={}".format(RAY_CI_DASHBOARD_AFFECTED),
+                "RAY_CI_DOC_AFFECTED={}".format(RAY_CI_DOC_AFFECTED),
+                "RAY_CI_JAVA_AFFECTED={}".format(RAY_CI_JAVA_AFFECTED),
+                "RAY_CI_PYTHON_AFFECTED={}".format(RAY_CI_PYTHON_AFFECTED),
+                "RAY_CI_LINUX_WHEELS_AFFECTED={}".format(RAY_CI_LINUX_WHEELS_AFFECTED),
+                "RAY_CI_MACOS_WHEELS_AFFECTED={}".format(RAY_CI_MACOS_WHEELS_AFFECTED),
+                "RAY_CI_STREAMING_CPP_AFFECTED={}".format(
+                    RAY_CI_STREAMING_CPP_AFFECTED
+                ),
+                "RAY_CI_STREAMING_PYTHON_AFFECTED={}".format(
+                    RAY_CI_STREAMING_PYTHON_AFFECTED
+                ),
+                "RAY_CI_STREAMING_JAVA_AFFECTED={}".format(
+                    RAY_CI_STREAMING_JAVA_AFFECTED
+                ),
+                "RAY_CI_DOCKER_AFFECTED={}".format(RAY_CI_DOCKER_AFFECTED),
+                "RAY_CI_PYTHON_DEPENDENCIES_AFFECTED={}".format(
+                    RAY_CI_PYTHON_DEPENDENCIES_AFFECTED
+                ),
+            ]
+        )
+    )

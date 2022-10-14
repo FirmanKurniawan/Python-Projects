@@ -42,84 +42,119 @@ root_dir = drive_folder + program
 
 """# **Functions**"""
 
+
 def create_folder(dir):
-  if not os.path.isdir(dir):
-    os.mkdir(dir)
-    print("Folder created at", dir)
-  else:
-    print("Folder already exist at", dir)
-  return dir
+    if not os.path.isdir(dir):
+        os.mkdir(dir)
+        print("Folder created at", dir)
+    else:
+        print("Folder already exist at", dir)
+    return dir
+
 
 def create_coordinate_rectangle(lat, lon, range):
-  left = round(float(lon) - range, 3)
-  bottom = round(float(lat) - range, 3)
-  right = round(float(lon) + range, 3)
-  top = round(float(lat) + range, 3)
-  return [left, bottom, right, top ]
+    left = round(float(lon) - range, 3)
+    bottom = round(float(lat) - range, 3)
+    right = round(float(lon) + range, 3)
+    top = round(float(lat) + range, 3)
+    return [left, bottom, right, top]
+
 
 def request_timeseries_list(payload):
-  url = "https://disc.gsfc.nasa.gov/service/subset/jsonwsp"
-  response = session.post(url, json = payload).json()
-  job_id = response["result"]["jobId"]
-  session_id = response["result"]["sessionId"]
-  return job_id, session_id
+    url = "https://disc.gsfc.nasa.gov/service/subset/jsonwsp"
+    response = session.post(url, json=payload).json()
+    job_id = response["result"]["jobId"]
+    session_id = response["result"]["sessionId"]
+    return job_id, session_id
+
 
 def get_result(job_id, session_id):
-  url = "https://disc.gsfc.nasa.gov/service/subset/jsonwsp"
-  payload = {"methodname":"GetStatus","args":{"jobId":job_id,"sessionId":session_id},"type":"jsonwsp/request","version":"1.0"}
-  percent = 0
-  while percent < 100:
-    os.system("cls")
-    time.sleep(7)
-    response = session.post(url, json = payload).json()
-    percent = response["result"]["PercentCompleted"]
-    text = response["result"]["Status"]
-    print(text, percent, "%")
-  print("https://disc.gsfc.nasa.gov/api/jobs/results/" + job_id)
-  return session.get("https://disc.gsfc.nasa.gov/api/jobs/results/" + job_id)
+    url = "https://disc.gsfc.nasa.gov/service/subset/jsonwsp"
+    payload = {
+        "methodname": "GetStatus",
+        "args": {"jobId": job_id, "sessionId": session_id},
+        "type": "jsonwsp/request",
+        "version": "1.0",
+    }
+    percent = 0
+    while percent < 100:
+        os.system("cls")
+        time.sleep(7)
+        response = session.post(url, json=payload).json()
+        percent = response["result"]["PercentCompleted"]
+        text = response["result"]["Status"]
+        print(text, percent, "%")
+    print("https://disc.gsfc.nasa.gov/api/jobs/results/" + job_id)
+    return session.get("https://disc.gsfc.nasa.gov/api/jobs/results/" + job_id)
+
 
 def create_payload(coordinates, data, start, end):
-  start = date.fromisoformat(start).strftime("%Y-%m-%dT00:00:00.000Z")
-  end = date.fromisoformat(end).strftime("%Y-%m-%dT23:59:59.999Z")
-  return {"methodname": "subset","args": {"start": start,"end": end,"box": coordinates,"crop": True,"format": "netCDF","agent": "OPeNDAP","role": "subset","data": data},"type": "jsonwsp/request","version": "1.0"}
+    start = date.fromisoformat(start).strftime("%Y-%m-%dT00:00:00.000Z")
+    end = date.fromisoformat(end).strftime("%Y-%m-%dT23:59:59.999Z")
+    return {
+        "methodname": "subset",
+        "args": {
+            "start": start,
+            "end": end,
+            "box": coordinates,
+            "crop": True,
+            "format": "netCDF",
+            "agent": "OPeNDAP",
+            "role": "subset",
+            "data": data,
+        },
+        "type": "jsonwsp/request",
+        "version": "1.0",
+    }
+
 
 def save_file(file_name, data):
-  file = open(file_name, "w")
-  file.write(data)
-  file.close()
-  print("Saved to", file_name)
-  return file_name
+    file = open(file_name, "w")
+    file.write(data)
+    file.close()
+    print("Saved to", file_name)
+    return file_name
+
 
 def get_all_url(text):
-  open_file = open(text, "r")
-  list_url = open_file.read().splitlines()[2:]
-  return list_url
+    open_file = open(text, "r")
+    list_url = open_file.read().splitlines()[2:]
+    return list_url
+
 
 def get_doc_url(text):
-  open_file = open(text, "r")
-  list_url = open_file.read().splitlines()[:2]
-  return list_url
+    open_file = open(text, "r")
+    list_url = open_file.read().splitlines()[:2]
+    return list_url
+
 
 def download_file(url, auth):
-  response = session.get(url, stream = True)
-  if response.url:
-    return session.get(response.url, auth = HTTPBasicAuth(auth[0], auth[1]))
-  return response
+    response = session.get(url, stream=True)
+    if response.url:
+        return session.get(response.url, auth=HTTPBasicAuth(auth[0], auth[1]))
+    return response
+
 
 def get_nasa_product_id(url):
-  return url.split("/")[-2]
+    return url.split("/")[-2]
+
 
 def create_variable(product, variable):
-  return {"datasetId": product, "variable": variable}
+    return {"datasetId": product, "variable": variable}
+
 
 def create_variables(product, variables):
-  temp = []
-  for variable in variables:
-    temp.append(create_variable(product, variable))
-  return temp
+    temp = []
+    for variable in variables:
+        temp.append(create_variable(product, variable))
+    return temp
+
 
 def create_dataframes(file_list, folder):
-  return pd.concat([xr.open_dataset(folder + nc4_file).to_dataframe() for nc4_file in file_list])
+    return pd.concat(
+        [xr.open_dataset(folder + nc4_file).to_dataframe() for nc4_file in file_list]
+    )
+
 
 """# **Initialization (Change here)**
 
@@ -174,7 +209,18 @@ password = "Manakali32!"
 """
 
 product = get_nasa_product_id(product_url)
-product_folder = today_folder + product + " from " + start + " to " + end + " at " + str(datetime.now().strftime("%H:%M")) + ""+ "/" 
+product_folder = (
+    today_folder
+    + product
+    + " from "
+    + start
+    + " to "
+    + end
+    + " at "
+    + str(datetime.now().strftime("%H:%M"))
+    + ""
+    + "/"
+)
 create_folder(product_folder)
 
 result_raw_folder = product_folder + "raw/"
@@ -210,20 +256,20 @@ docs = get_doc_url(urls_path)
 nc4_file_list = []
 
 for doc in docs:
-  doc_name = doc.split("/")[-1]
-  f = open(product_folder + doc_name, "wb")
-  content = download_file(doc, authorization).content
-  f.write(content)
-  f.close()
+    doc_name = doc.split("/")[-1]
+    f = open(product_folder + doc_name, "wb")
+    content = download_file(doc, authorization).content
+    f.write(content)
+    f.close()
 
 for url in tqdm(urls):
-# for url in urls:
-  name = url.split("/")[-1].split(".")[4] + ".nc4"
-  f = open(result_raw_folder + name, "wb")
-  content = download_file(url, authorization).content
-  f.write(content)
-  f.close()
-  nc4_file_list.append(name)
+    # for url in urls:
+    name = url.split("/")[-1].split(".")[4] + ".nc4"
+    f = open(result_raw_folder + name, "wb")
+    content = download_file(url, authorization).content
+    f.write(content)
+    f.close()
+    nc4_file_list.append(name)
 
 """## **Merge Dataframe**"""
 

@@ -1,5 +1,6 @@
 import random
 
+
 class Bank:
     def __init__(self):
         self.nama = ""
@@ -33,4 +34,3 @@ class Bank:
             return self.saldo
 
         return 0
-    

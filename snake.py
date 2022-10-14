@@ -1,1 +1,1 @@
-print('yg tw tw aja')
+print("yg tw tw aja")

@@ -29,7 +29,7 @@ def main(files):
         for (idx, face) in enumerate(faces):
             face = cv2.cvtColor(face, cv2.COLOR_RGB2BGR)
             filename, ext = osp.splitext(file)
-            filename += '_face_{:03}'.format(idx) + ext
+            filename += "_face_{:03}".format(idx) + ext
             cv2.imwrite(filename, face)
 
 
@@ -45,14 +45,14 @@ def detect_align_faces(detector, sp, img):
         dx = right_center[0] - left_center[0]
         dy = right_center[1] - left_center[1]
         angle = np.degrees(np.arctan2(dy, dx))
-        dist = np.sqrt(dy ** 2 + dx ** 2)
+        dist = np.sqrt(dy**2 + dx**2)
         out_dist = OUT_SIZE[0] * (1 - 2 * LEFT_EYE_POS[0])
         scale = out_dist / dist
         center = ((left_center + right_center) // 2).tolist()
 
         mat = cv2.getRotationMatrix2D(center, angle, scale)
-        mat[0, 2] += (0.5 * OUT_SIZE[0] - center[0])
-        mat[1, 2] += (LEFT_EYE_POS[1] * OUT_SIZE[1] - center[1])
+        mat[0, 2] += 0.5 * OUT_SIZE[0] - center[0]
+        mat[1, 2] += LEFT_EYE_POS[1] * OUT_SIZE[1] - center[1]
         res_face = cv2.warpAffine(img, mat, OUT_SIZE, flags=cv2.INTER_CUBIC)
         res.append(res_face)
 
@@ -64,11 +64,11 @@ def shape_to_pos(shape):
     for p in shape.parts():
         parts.append((p.x, p.y))
 
-    left = parts[LEFT_EYE_RANGE[0]: LEFT_EYE_RANGE[-1]]
-    right = parts[RIGHT_EYE_RABGE[0]: RIGHT_EYE_RABGE[-1]]
+    left = parts[LEFT_EYE_RANGE[0] : LEFT_EYE_RANGE[-1]]
+    right = parts[RIGHT_EYE_RABGE[0] : RIGHT_EYE_RABGE[-1]]
 
     return (np.array(left), np.array(right))
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     main(sys.argv[1:])
