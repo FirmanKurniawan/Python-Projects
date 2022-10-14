@@ -19,11 +19,11 @@ accuracy = metrics.accuracy_score(y_test, clf.predict(x_test)) * 100
 print("Accuracy", round(accuracy, 1))
 
 metrics.plot_confusion_matrix(
-  clf,
-  x_test,
-  y_test,
-  display_labels=iris["target_names"],
-  cmap="Blues",
-  normalize="true",
+    clf,
+    x_test,
+    y_test,
+    display_labels=iris["target_names"],
+    cmap="Blues",
+    normalize="true",
 )
 plt.show()

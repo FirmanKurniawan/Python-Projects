@@ -5,7 +5,7 @@ import os
 
 # compress file function
 def zip_file(file_path):
-    compress_file = zipfile.ZipFile(file_path + '.zip', 'w')
+    compress_file = zipfile.ZipFile(file_path + ".zip", "w")
     compress_file.write(path, compress_type=zipfile.ZIP_DEFLATED)
     compress_file.close()
 
@@ -28,7 +28,7 @@ def retrieve_file_paths(dir_name):
 
 def zip_dir(dir_path, file_paths):
     # write files and folders to a zipfile
-    compress_dir = zipfile.ZipFile(dir_path + '.zip', 'w')
+    compress_dir = zipfile.ZipFile(dir_path + ".zip", "w")
     with compress_dir:
         # write each file separately
         for file in file_paths:
@@ -41,12 +41,12 @@ if __name__ == "__main__":
     if os.path.isdir(path):
         files_path = retrieve_file_paths(path)
         # print the list of files to be zipped
-        print('The following list of files will be zipped:')
+        print("The following list of files will be zipped:")
         for file_name in files_path:
             print(file_name)
         zip_dir(path, files_path)
     elif os.path.isfile(path):
-        print('The %s will be zipped:' % path)
+        print("The %s will be zipped:" % path)
         zip_file(path)
     else:
-        print('a special file(socket,FIFO,device file), please input file or dir')
+        print("a special file(socket,FIFO,device file), please input file or dir")

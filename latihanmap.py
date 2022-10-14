@@ -1,6 +1,7 @@
 # Define the function to calculate power
-def cal_power(n):    
-    return x ** n
+def cal_power(n):
+    return x**n
+
 
 # Take the value of x
 x = int(input("Enter the value of x:"))

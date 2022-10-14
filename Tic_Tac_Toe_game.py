@@ -2,7 +2,6 @@ import random
 
 
 class TicTacToe:
-
     def __init__(self):
         self.board = []
 
@@ -10,7 +9,7 @@ class TicTacToe:
         for i in range(3):
             row = []
             for j in range(3):
-                row.append('-')
+                row.append("-")
             self.board.append(row)
 
     def get_random_first_player(self):
@@ -64,19 +63,19 @@ class TicTacToe:
 
         for row in self.board:
             for item in row:
-                if item == '-':
+                if item == "-":
                     return False
         return True
 
     def is_board_filled(self):
         for row in self.board:
             for item in row:
-                if item == '-':
+                if item == "-":
                     return False
         return True
 
     def swap_player_turn(self, player):
-        return 'X' if player == 'O' else 'O'
+        return "X" if player == "O" else "O"
 
     def show_board(self):
         for row in self.board:
@@ -87,7 +86,7 @@ class TicTacToe:
     def start(self):
         self.create_board()
 
-        player = 'X' if self.get_random_first_player() == 1 else 'O'
+        player = "X" if self.get_random_first_player() == 1 else "O"
         while True:
             print(f"Player {player} turn")
 
@@ -95,7 +94,8 @@ class TicTacToe:
 
             # taking user input
             row, col = list(
-                map(int, input("Enter row and column numbers to fix spot: ").split()))
+                map(int, input("Enter row and column numbers to fix spot: ").split())
+            )
             print()
 
             # fixing the spot

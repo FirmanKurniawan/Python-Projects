@@ -8,7 +8,8 @@ url = "https://komikcast.net/"
 
 
 def logo_search():
-    print("""
+    print(
+        """
  _   __                _ _                 _   
 | | / /               (_) |               | |  
 | |/ /  ___  _ __ ___  _| | _____ __ _ ___| |_ 
@@ -18,7 +19,8 @@ def logo_search():
 
         Komik Information Scraper
             from KomikCast ID
-    """)
+    """
+    )
 
 
 def search(query, num=0, tempLink=[]):
@@ -26,7 +28,7 @@ def search(query, num=0, tempLink=[]):
     # request = req.get(site)
     # soup = bs(request.content, "lxml")
     # contoh lebih simple dri yg diatas :3
-    cek = bs(req.get(url+"?s={}".format(query)).content, "lxml")
+    cek = bs(req.get(url + "?s={}".format(query)).content, "lxml")
 
     mangas = cek.find(class_="film-list")
     animepost = mangas.find_all("div", {"class": "animepost"})
@@ -59,10 +61,8 @@ def info_komik(link):
     cek = bs(req.get(link).content, "lxml")
 
     title = cek.find(class_="entry-title").get_text()
-    chapter = [last.text.split("Chapter ")
-               for last in cek.find_all(class_="barunew")]
-    genres = [genre.text for genre in cek.find(
-        class_="genre-info").find_all("a")]
+    chapter = [last.text.split("Chapter ") for last in cek.find_all(class_="barunew")]
+    genres = [genre.text for genre in cek.find(class_="genre-info").find_all("a")]
     sinopsis = cek.find(class_="entry-content entry-content-single").get_text()
     sub_info = [sub.text for sub in cek.find(class_="spe").find_all("span")]
 
@@ -93,7 +93,7 @@ def main_menu():
             print("\nPilih yang bener bre")
             pilih = input("Pilih : ")
 
-        scan = cari[int(pilih)-1]
+        scan = cari[int(pilih) - 1]
         info_komik(scan)
 
 

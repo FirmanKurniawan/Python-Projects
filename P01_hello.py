@@ -1,9 +1,10 @@
-
 # This program prints the entered message
 
+
 def justPrint(text):
-    '''This function prints the text passed as argument to this function'''
+    """This function prints the text passed as argument to this function"""
     print(text)
 
-if __name__ == '__main__':
-    justPrint('Hello')
+
+if __name__ == "__main__":
+    justPrint("Hello")

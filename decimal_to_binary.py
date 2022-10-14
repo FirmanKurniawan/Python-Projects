@@ -1,5 +1,9 @@
 try:
-    menu = int(input("Choose an option: \n 1. Decimal to binary \n 2. Binary to decimal\n Option: "))
+    menu = int(
+        input(
+            "Choose an option: \n 1. Decimal to binary \n 2. Binary to decimal\n Option: "
+        )
+    )
     if menu < 1 or menu > 2:
         raise ValueError
     if menu == 1:
@@ -9,4 +13,4 @@ try:
         binary = input("Input your binary number:\n Binary: ")
         print("Decimal: {}".format(int(binary, 2)))
 except ValueError:
-    print ("please choose a valid option")
+    print("please choose a valid option")

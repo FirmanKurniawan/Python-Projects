@@ -11,7 +11,8 @@ class Jsminer:
 
     @staticmethod
     def banner():
-        print("""
+        print(
+            """
     _____                  __       __  __                               
    /     |                /  \     /  |/  |                              
    $$$$$ |  _______       $$  \   /$$ |$$/  _______    ______    ______  
@@ -23,16 +24,17 @@ $$    $$/ /     $$/       $$ | $/  $$ |$$ |$$ |  $$ |$$       |$$ |
  $$$$$$/  $$$$$$$/        $$/      $$/ $$/ $$/   $$/  $$$$$$$/ $$/       
                                                         v 1.0      
 
-        """)
+        """
+        )
 
     def getting_js(self):
         response = requests.get(self.url_main)
         data = response.text
         js = []
         if data:
-            soup = BeautifulSoup(data, 'html.parser')
-            for script in soup.find_all('script'):
-                js.append(script.get('src'))
+            soup = BeautifulSoup(data, "html.parser")
+            for script in soup.find_all("script"):
+                js.append(script.get("src"))
 
         return js
 
@@ -41,7 +43,7 @@ $$    $$/ /     $$/       $$ | $/  $$ |$$ |$$ |  $$ |$$       |$$ |
         urls = []
         for url in js:
             if url:
-                if url.startswith('http'):
+                if url.startswith("http"):
                     urls.append(url)
                 else:
                     urls.append(self.url_main + url)
@@ -58,12 +60,12 @@ $$    $$/ /     $$/       $$ | $/  $$ |$$ |$$ |  $$ |$$       |$$ |
         return d
 
 
-if __name__ == '__main__':
+if __name__ == "__main__":
     if len(sys.argv) == 2:
         url_main = sys.argv[1]
         jsminer = Jsminer(url_main).testing_urls()
         for url in jsminer:
             print(url)
     else:
-        print('Usage:js_miner <url>')
+        print("Usage:js_miner <url>")
         sys.exit(1)

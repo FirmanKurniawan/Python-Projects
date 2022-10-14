@@ -38,9 +38,9 @@ class Tree:
     def _find(self, data, node):
         if data == node.data:
             return node
-        elif (data < node.data and node.left is not None):
+        elif data < node.data and node.left is not None:
             return self._find(data, node.left)
-        elif (data > node.data and node.right is not None):
+        elif data > node.data and node.right is not None:
             return self._find(data, node.right)
 
     # Method for delete tree
@@ -55,5 +55,5 @@ class Tree:
     def _printTree(self, node):
         if node is not None:
             self._printTree(node.left)
-            print(str(node.data) + ' ')
+            print(str(node.data) + " ")
             self._printTree(node.right)

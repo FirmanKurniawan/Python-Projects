@@ -50,19 +50,9 @@ else:
     score -= 1
 
 if score >= 3:
-    print("wahh kamu pinter juga yah, kamu mendapatkan nilai " + str(score*25))
+    print("wahh kamu pinter juga yah, kamu mendapatkan nilai " + str(score * 25))
 else:
     print("geblek soal ginian aja gabisa ngerjain cuih")
-
-
-
-
-
-
-
-
-
-
 
 
 sys.exit()

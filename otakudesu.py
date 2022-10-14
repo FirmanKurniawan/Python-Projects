@@ -8,24 +8,26 @@ url = "https://otakudesu.video/"
 
 def logo():
     os.system("clear")
-    print("""    
+    print(
+        """    
   ____  __       __           __               
  / __ \/ /____ _/ /____ _____/ /__ ___ __ __   
 / /_/ / __/ _ `/  '_/ // / _  / -_|_-</ // /   
 \____/\__/\_,_/_/\_\\\_,_/\_,_/\__/___/\_,_/     
                        Otakudesu GD Grabber
-    """)
+    """
+    )
 
 
 def search_anime():
     judul = input("[?] Judul Anime : ")
-    open_url = bs(
-        req.get(url+"?s={}&post_type=anime".format(judul)).content, "lxml")
+    open_url = bs(req.get(url + "?s={}&post_type=anime".format(judul)).content, "lxml")
 
     for anime in open_url.find_all("li", {"style": "list-style:none;"}):
         judul = anime.find("h2").find("a").get_text()
-        info_anime = [stat.text.split(
-            ":") for stat in anime.find_all("div", {"class": "set"})]
+        info_anime = [
+            stat.text.split(":") for stat in anime.find_all("div", {"class": "set"})
+        ]
         link = anime.find("h2").find("a").get("href")
 
         print("\n[?] {}".format(judul))
@@ -71,7 +73,7 @@ def shortlink(batch, kualitas):
         for result in results:
             print("[•] {} -> {}".format(kualitas[i], result))
             i += 1
-    print("-"*40)
+    print("-" * 40)
 
 
 logo()

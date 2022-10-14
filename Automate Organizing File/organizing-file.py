@@ -13,12 +13,12 @@ files_in_directories = Path(currentDirectory)
 
 # Variable that hold directory name based on file type
 types = {}
-types["documents"] =  ('.doc', '.docx', '.txt', '.pdf', '.xls', '.ppt', '.xlsx', '.pptx')
-types["images"] =  ('.jpg', '.jpeg', '.png', '.svg', '.gif', '.tif', '.tiff')
-types["softwares"] =  ('.exe', '.pkg', '.dmg')
-types["videos"] =  ('.mkv', '.mp4', '.3gp', '.m4v', '.avi', 'flv', '.webm')
-types["music"] = ('.mp3', '.ogg', '.m4a', '.wav')
-types["compressed"] =  ('.rar', '.zip', '.gzip')
+types["documents"] = (".doc", ".docx", ".txt", ".pdf", ".xls", ".ppt", ".xlsx", ".pptx")
+types["images"] = (".jpg", ".jpeg", ".png", ".svg", ".gif", ".tif", ".tiff")
+types["softwares"] = (".exe", ".pkg", ".dmg")
+types["videos"] = (".mkv", ".mp4", ".3gp", ".m4v", ".avi", "flv", ".webm")
+types["music"] = (".mp3", ".ogg", ".m4a", ".wav")
+types["compressed"] = (".rar", ".zip", ".gzip")
 
 for file in files_in_directories.iterdir():
     if file.is_file() and file.stem != ".DS_Store":
@@ -27,12 +27,12 @@ for file in files_in_directories.iterdir():
             # Make new folder or move file into existing folder
             if file.suffix.lower() in type_list:
                 new_dir = currentDirectory.joinpath(dir_name.capitalize())
-                
+
                 if not new_dir.exists():
                     new_dir.mkdir()
-                 
+
                 new_file_path = new_dir.joinpath(file.name)
-                
+
                 # Don't move file when exists inside a new folder
                 if not new_file_path.exists():
                     file.replace(new_file_path)

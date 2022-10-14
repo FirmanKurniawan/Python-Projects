@@ -7,7 +7,7 @@ app = QApplication([])
 app.setQuitOnLastWindowClosed(False)
 
 # Create the icon
-icon = QIcon(os.path.join("images","color.png"))
+icon = QIcon(os.path.join("images", "color.png"))
 
 clipboard = QApplication.clipboard()
 dialog = QColorDialog()
@@ -17,20 +17,23 @@ def copy_color_hex():
     if dialog.exec_():
         color = dialog.currentColor()
         clipboard.setText(color.name())
-  
+
+
 def copy_color_rgb():
     if dialog.exec_():
         color = dialog.currentColor()
-        clipboard.setText("rgb(%d, %d, %d)" % (
-            color.red(), color.green(), color.blue()
-        ))
-  
+        clipboard.setText(
+            "rgb(%d, %d, %d)" % (color.red(), color.green(), color.blue())
+        )
+
+
 def copy_color_hsv():
     if dialog.exec_():
         color = dialog.currentColor()
-        clipboard.setText("hsv(%d, %d, %d)" % (
-            color.hue(), color.saturation(), color.value()
-        ))
+        clipboard.setText(
+            "hsv(%d, %d, %d)" % (color.hue(), color.saturation(), color.value())
+        )
+
 
 # Create the tray
 tray = QSystemTrayIcon()

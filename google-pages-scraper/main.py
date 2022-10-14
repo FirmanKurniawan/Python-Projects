@@ -16,8 +16,7 @@ def get_source(url):
 
 def get_results(query, start=10):
 
-    response = get_source(
-        f"https://www.google.com/search?q={query}&start={start}")
+    response = get_source(f"https://www.google.com/search?q={query}&start={start}")
 
     return response
 
@@ -36,9 +35,9 @@ def parse_results(response):
     for result in results:
 
         item = {
-            'Title': result.find(css_identifier_title, first=True).text,
-            'Link': result.find(css_identifier_link, first=True).attrs['href'],
-            'Text': result.find(css_identifier_text, first=True).text
+            "Title": result.find(css_identifier_title, first=True).text,
+            "Link": result.find(css_identifier_link, first=True).attrs["href"],
+            "Text": result.find(css_identifier_text, first=True).text,
         }
 
         output.append(item)
@@ -54,4 +53,4 @@ def google_search(query):
 results = google_search("online defensive driving school US")
 
 csvFile = pd.DataFrame(results)
-csvFile.to_csv('results.csv', index=False)
+csvFile.to_csv("results.csv", index=False)

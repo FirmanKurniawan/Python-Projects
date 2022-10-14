@@ -9,12 +9,12 @@ home = [
     {"route_id": 1, "route_name": "Home", "route_url": "/"},
     {"route_id": 2, "route_name": "Torrent List", "route_url": "/torrents"},
     {"route_id": 3, "route_name": "Torrent Data", "route_url": "/magnet"},
-    {"route_id": 4, "route_name": "Sites", "route_url": "/sites"}
+    {"route_id": 4, "route_name": "Sites", "route_url": "/sites"},
 ]
 
 
 def getTorrentsList(search_key):
-    url="https://www.1377x.to/search/" + search_key + "/1/"
+    url = "https://www.1377x.to/search/" + search_key + "/1/"
     response = requests.get(url, verify=False)
     data = []
     soup = BeautifulSoup(response.text, "lxml")
@@ -28,7 +28,7 @@ def getTorrentsList(search_key):
         cols = rows[i].find_all("td")
         col1 = cols[0].find_all("a")[1]
         name = col1.text
-        url = "https://www.1377x.to/" + col1['href']
+        url = "https://www.1377x.to/" + col1["href"]
         data.append(
             {
                 "name": name,
@@ -61,9 +61,11 @@ def gettorrentdata(link):
 
 app = Flask(__name__)
 
+
 @app.route("/", methods=["GET"])
 def index():
     return Response(json.dumps(home), mimetype="application/json")
+
 
 @app.route("/sites", methods=["GET"])
 def getSites():
@@ -78,6 +80,7 @@ def getTorrents():
     return Response(
         json.dumps(getTorrentsList(search_key)), mimetype="application/json"
     )
+
 
 @app.route("/magnet", methods=["GET"])
 def getTorrentData():

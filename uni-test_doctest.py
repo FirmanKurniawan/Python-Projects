@@ -1,6 +1,7 @@
 class Grade_st:
-    def __init__(self,grade):
+    def __init__(self, grade):
         self.grade = grade
+
     def get_grade(self):
         """
         >>> g = Grade_st(80)
@@ -20,16 +21,18 @@ class Grade_st:
         'F'
         """
         if self.grade >= 80:
-            return 'A'
+            return "A"
         elif self.grade >= 70:
-            return 'B'
+            return "B"
         elif self.grade >= 60:
-            return 'C'
+            return "C"
         elif self.grade >= 50:
-            return 'D'
+            return "D"
         else:
-            return 'F'
+            return "F"
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     import doctest
+
     doctest.testmod(verbose=True)

@@ -3,6 +3,7 @@ import matplotlib.pyplot as plt
 import wikipedia
 import sys
 import warnings
+
 # supressing unnecessary warnings
 warnings.filterwarnings("ignore")
 
@@ -14,9 +15,15 @@ def gen_cloud(topic):
     except:
         print("Error, try searching something else...")
         sys.exit()
-    STOPWORDS.add('==')
+    STOPWORDS.add("==")
     stopwords = set(STOPWORDS)
-    wordcloud = WordCloud(stopwords=stopwords, max_words=200, background_color="black", width=600, height=350).generate(content)
+    wordcloud = WordCloud(
+        stopwords=stopwords,
+        max_words=200,
+        background_color="black",
+        width=600,
+        height=350,
+    ).generate(content)
     return wordcloud
 
 
@@ -27,18 +34,18 @@ def save_cloud(wordcloud):
 
 # function to display the wordcloud with matplotlib
 def show_cloud(wordcloud):
-    plt.imshow(wordcloud, interpolation='bilinear')
+    plt.imshow(wordcloud, interpolation="bilinear")
     plt.axis("off")
     plt.show()
 
 
 # driver code
-if __name__ == '__main__':
+if __name__ == "__main__":
     topic = input("What do you want to search: ").strip()
     wordcloud = gen_cloud(topic)
     save_cloud(wordcloud)
     print("Wordcloud saved to current directory as wordcloud.png")
     desc = input("Do you wish to see the output(y/n): ")
-    if desc == 'y':
+    if desc == "y":
         show_cloud(wordcloud)
     sys.exit()

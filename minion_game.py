@@ -1,5 +1,5 @@
 # this game get from hackerank
-vowels = set('AEIOU')
+vowels = set("AEIOU")
 stuart = kevin = 0
 word = input("Input your text : ")
 for i, c in enumerate(word):
@@ -8,8 +8,8 @@ for i, c in enumerate(word):
     else:
         stuart += len(word) - i
 if stuart > kevin:
-    print('Stuart', stuart)
+    print("Stuart", stuart)
 elif kevin > stuart:
-    print('Kevin', kevin)
+    print("Kevin", kevin)
 else:
-    print('Draw')
+    print("Draw")

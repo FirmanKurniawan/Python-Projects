@@ -6,7 +6,7 @@ yt = YouTube(url)
 print(f"Title: {yt.title}")
 videos = yt.streams
 
-for i,video in enumerate(videos):
+for i, video in enumerate(videos):
     print(f"{str(i)} {str(video)}")
 
 num = int(input("Enter your choice: "))

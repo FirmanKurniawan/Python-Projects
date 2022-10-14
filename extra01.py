@@ -30,12 +30,7 @@ class ExtendedLoginForm(object):
         normal login.
     """
 
-    def __init__(self,
-                 auth,
-                 alt_login_form,
-                 signals=[],
-                 login_arg='login'
-                 ):
+    def __init__(self, auth, alt_login_form, signals=[], login_arg="login"):
         self.auth = auth
         self.alt_login_form = alt_login_form
         self.signals = signals
@@ -45,7 +40,7 @@ class ExtendedLoginForm(object):
         """
         Delegate the get_user to alt_login_form.get_user.
         """
-        if hasattr(self.alt_login_form, 'get_user'):
+        if hasattr(self.alt_login_form, "get_user"):
             return self.alt_login_form.get_user()
         return None  # let gluon.tools.Auth.get_or_create_user do the rest
 
@@ -54,7 +49,7 @@ class ExtendedLoginForm(object):
         Optional implement for alt_login_form.
         In normal case, this should be replaced by get_user, and never get called.
         """
-        if hasattr(self.alt_login_form, 'login_url'):
+        if hasattr(self.alt_login_form, "login_url"):
             return self.alt_login_form.login_url(next)
         return self.auth.settings.login_url
 
@@ -64,7 +59,7 @@ class ExtendedLoginForm(object):
         Called if bool(alt_login_form.get_user) is True.
         If alt_login_form implemented logout_url function, it will return that function call.
         """
-        if hasattr(self.alt_login_form, 'logout_url'):
+        if hasattr(self.alt_login_form, "logout_url"):
             return self.alt_login_form.logout_url(next)
         return next
 
@@ -82,9 +77,9 @@ class ExtendedLoginForm(object):
         request = current.request
         args = request.args
 
-        if (self.signals and
-            any([True for signal in self.signals if signal in request.vars])
-            ):
+        if self.signals and any(
+            [True for signal in self.signals if signal in request.vars]
+        ):
             return self.alt_login_form.login_form()
 
         self.auth.settings.login_form = self.auth

@@ -11,8 +11,7 @@ def main():
         for line in fr:
             website = line.strip()
             status = requests.get(website).status_code
-            status_dict[website] = "working" if status == 200 \
-                else "not working"
+            status_dict[website] = "working" if status == 200 else "not working"
 
     # print(status_dict)
     with open("website_status.csv", "w", newline="") as fw:

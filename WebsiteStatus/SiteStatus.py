@@ -1,8 +1,6 @@
 import requests
 
 
-
-
 def main():
 
     siteName = input("Kero..What website would you like to check the status of?")
@@ -12,12 +10,6 @@ def main():
         print("Website is up")
     else:
         print(statusCode, "website is down")
-
-
-
-
-
-
 
 
 if __name__ == "__main__":
