@@ -20,7 +20,6 @@ mycipher = AES.new(key, AES.MODE_CFB, iv)
 # and transmit it together
 ciphertext = iv + mycipher.encrypt(plain_text.encode())
 
-
 # To decrypt, use key and iv to generate a new AES object
 mydecrypt = AES.new(key, AES.MODE_CFB, ciphertext[:16])
 
