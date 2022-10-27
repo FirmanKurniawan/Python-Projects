@@ -17,7 +17,7 @@ def passwordValidator(password):
         digit=1.3
     elif(bool(re.match(r"^[a-z0-9]*$",password))):
         digit=1.2
-    else:
+    else: 
         digit=1.8
 
     def logF(x):
